@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DOM</title>
+  <style>
+    .subscribebutton {
+      border: none;
+      color: rgba(234, 234, 244, 0.899);
+      background-color: black;
+      padding-top: 10px;
+      padding-bottom: 10px;
+      padding-left: 10px;
+      padding-right: 10px;
+      font-weight: bold;
+      border-radius: 10px;
+      cursor: pointer;
+      margin-bottom: 30px;
+    }
+
+    .is-subscribed{
+      background-color: gray;
+      color: rgb(243, 234, 234);
+    }
+
+    body{
+      font-family: Georgia, 'Times New Roman', Times, serif;
+    }
+
+    .costinput{
+      font-size: 15px;
+      padding: 10px 50px;
+      border: none;
+    }
+    .calculate-button{
+      background-color: green;
+      border : none;
+      color: white;
+      font-size: 15px;
+      padding: 10px, 20px;
+    }
+
+  </style>
+</head>
+<body>
+  <h1>JavaScript DOM project</h1>
+  <p>YouTube subscribe button</p>
+  <button onclick="toggleSubscribe()" class="js-subscribe-button subscribebutton">Subscribe</button>
+
+ 
+  <h1>Amazon shipping calculator</h1>
+  <p class="js-total-cost total-cost"></p>
+
+  <input class="costInput costInput" placeholder="Cost of order">
+  <button onclick="calculateTotal()"; class="calculate-button" class="js-cost-input">Calculate</button>
+
+  <script>
+    function toggleSubscribe() {
+      const buttonElement = document.querySelector('.js-subscribe-button');
+
+      if (buttonElement.innerHTML === 'Subscribe') {
+        buttonElement.innerHTML = 'Subscribed';
+        buttonElement.classList.add('is-subscribed')
+      } else {
+        buttonElement.innerHTML = 'Subscribe';
+        buttonElement.classList.remove('is-subscribed')
+      }
+    }
+
+    
+    function calculateTotal() {
+      const buttonElement = document.querySelector('.js-cost-input');
+      const inputElement = document.querySelector('.costInput');
+      let cost = inputElement.value;
+
+      if (cost < 40) {
+        cost = parseFloat(cost) + 10;
+      }
+
+      const totalCostElement = document.querySelector('.js-total-cost');
+      totalCostElement.textContent = 'Total Cost: $' + cost.toFixed(2);
+    }
+  </script>
+</body>
+</html>

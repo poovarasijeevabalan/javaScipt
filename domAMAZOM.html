@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Amazon DOM</title>
+</head>
+<body>
+  <h1>JavaScript DOM project</h1>
+  <p>Amazon shipping calculator</p>
+  <p class="js-total-cost"></p>
+
+  <input class="costInput" placeholder="Cost of order">
+  <button onclick="calculateTotal()" class="js-cost-input">Calculate</button>
+
+  <script>
+    function calculateTotal() {
+      const buttonElement = document.querySelector('.js-cost-input');
+      const inputElement = document.querySelector('.costInput');
+      let cost = inputElement.value;
+
+      if (cost < 40) {
+        cost = parseFloat(cost) + 10;
+      }
+
+      const totalCostElement = document.querySelector('.js-total-cost');
+      totalCostElement.textContent = 'Total Cost: $' + cost.toFixed(2);
+    }
+  </script>
+</body>
+</html>
